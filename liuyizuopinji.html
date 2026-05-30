@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>刘一个人设计作品集</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:"Microsoft YaHei", Arial, sans-serif;
+  color:#f3fff7;
+  overflow-x:hidden;
+  background:#06120f;
+}
+
+/* 深绿宇宙背景 */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-5;
+  background:
+    radial-gradient(circle at 78% 42%, rgba(176,255,178,0.35), transparent 20%),
+    radial-gradient(circle at 52% 38%, rgba(60,150,105,0.32), transparent 32%),
+    radial-gradient(circle at 18% 72%, rgba(50,120,95,0.28), transparent 36%),
+    radial-gradient(circle at 80% 72%, rgba(130,255,170,0.18), transparent 32%),
+    linear-gradient(to bottom, #020706 0%, #06120f 34%, #092119 68%, #020706 100%);
+}
+
+/* 星空 */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-4;
+  pointer-events:none;
+  background-image:
+    radial-gradient(rgba(255,255,255,0.95) 1px, transparent 1px),
+    radial-gradient(rgba(190,255,210,0.65) 1px, transparent 1px),
+    radial-gradient(rgba(120,255,180,0.45) 1px, transparent 2px);
+  background-size:70px 70px, 130px 130px, 210px 210px;
+  background-position:0 0, 40px 80px, 100px 40px;
+  opacity:0.65;
+  animation:starMove 60s linear infinite;
+}
+
+@keyframes starMove{
+  from{transform:translateY(0);}
+  to{transform:translateY(260px);}
+}
+
+/* 行星光弧 */
+.planet-glow{
+  position:fixed;
+  right:-18vw;
+  top:24vh;
+  width:70vw;
+  height:70vw;
+  border-radius:50%;
+  z-index:-3;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(220,255,215,0.38), transparent 22%),
+    radial-gradient(circle at 48% 42%, rgba(120,220,150,0.30), transparent 42%),
+    radial-gradient(circle at 50% 50%, rgba(40,90,70,0.58), rgba(10,25,20,0.95) 66%, transparent 67%);
+  box-shadow:
+    0 0 90px rgba(166,255,180,0.45),
+    inset 0 0 80px rgba(255,255,255,0.12);
+  filter:blur(1px);
+  opacity:0.72;
+}
+
+/* 绿色雾气 */
+.green-mist{
+  position:fixed;
+  inset:-20%;
+  z-index:-2;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse at 38% 46%, rgba(115,255,165,0.18), transparent 32%),
+    radial-gradient(ellipse at 65% 28%, rgba(190,255,190,0.14), transparent 28%),
+    radial-gradient(ellipse at 25% 75%, rgba(62,170,125,0.16), transparent 34%);
+  filter:blur(34px);
+  mix-blend-mode:screen;
+  animation:mistFloat 15s ease-in-out infinite alternate;
+}
+
+@keyframes mistFloat{
+  from{transform:translate3d(-25px,0,0) scale(1);}
+  to{transform:translate3d(38px,-26px,0) scale(1.08);}
+}
+
+/* 胶片颗粒 */
+.pattern-overlay{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  opacity:0.08;
+  background-image:radial-gradient(rgba(255,255,255,0.85) 1px, transparent 1px);
+  background-size:3px 3px;
+  animation:noiseMove 0.4s steps(2) infinite;
+}
+
+@keyframes noiseMove{
+  0%{transform:translate(0,0);}
+  25%{transform:translate(-2px,1px);}
+  50%{transform:translate(2px,-2px);}
+  75%{transform:translate(-1px,-3px);}
+  100%{transform:translate(0,0);}
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+section{
+  padding:100px 8%;
+  position:relative;
+  z-index:2;
+}
+
+/* 导航 */
+.nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:76px;
+  padding:0 8%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  z-index:10;
+  background:rgba(3,10,8,0.46);
+  backdrop-filter:blur(24px);
+  border-bottom:1px solid rgba(210,255,220,0.12);
+}
+
+.logo{
+  font-size:23px;
+  font-weight:900;
+  letter-spacing:1px;
+  color:#ffffff;
+}
+
+.logo span{
+  color:#baff8a;
+}
+
+.nav-links{
+  display:flex;
+  gap:34px;
+  font-size:14px;
+  color:rgba(235,255,240,0.78);
+  font-weight:700;
+}
+
+.nav-links a:hover{
+  color:#baff8a;
+}
+
+/* Hero */
+.hero{
+  min-height:100vh;
+  padding:150px 8% 80px;
+  display:grid;
+  grid-template-columns:1.05fr 0.95fr;
+  align-items:center;
+  gap:60px;
+}
+
+.tag{
+  display:inline-block;
+  padding:9px 18px;
+  border:1px solid rgba(186,255,138,0.30);
+  border-radius:999px;
+  color:#baff8a;
+  background:rgba(186,255,138,0.08);
+  margin-bottom:24px;
+  font-size:13px;
+  font-weight:800;
+  backdrop-filter:blur(12px);
+}
+
+.hero h1{
+  font-size:clamp(56px,7.4vw,104px);
+  line-height:1.02;
+  letter-spacing:-4px;
+  margin-bottom:24px;
+  color:#ffffff;
+  text-shadow:
+    0 0 30px rgba(186,255,138,0.18),
+    0 14px 46px rgba(0,0,0,0.48);
+}
+
+.hero h1 span{
+  background:linear-gradient(90deg,#baff8a,#d8ffd1,#ffffff);
+  -webkit-background-clip:text;
+  color:transparent;
+  font-style:italic;
+}
+
+.hero p{
+  max-width:650px;
+  color:rgba(230,255,236,0.74);
+  font-size:18px;
+  line-height:1.9;
+  margin-bottom:38px;
+  font-weight:500;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:14px 28px;
+  border-radius:999px;
+  border:1px solid rgba(220,255,225,0.16);
+  background:rgba(255,255,255,0.07);
+  backdrop-filter:blur(18px);
+  transition:0.35s;
+  font-weight:800;
+  color:#ffffff;
+}
+
+.btn:hover{
+  transform:translateY(-4px);
+  background:rgba(255,255,255,0.12);
+}
+
+.btn.primary{
+  background:linear-gradient(135deg,#caff42,#9cff3f);
+  color:#08110b;
+  border:none;
+  box-shadow:0 0 38px rgba(186,255,138,0.36);
+}
+
+/* 右侧玻璃卡 */
+.hero-card{
+  position:relative;
+  min-height:360px;
+  border-radius:42px;
+  overflow:hidden;
+  background:linear-gradient(145deg,rgba(210,255,220,0.13),rgba(255,255,255,0.035));
+  border:1px solid rgba(220,255,225,0.18);
+  backdrop-filter:blur(22px);
+  box-shadow:
+    0 45px 120px rgba(0,0,0,0.52),
+    inset 0 0 70px rgba(186,255,138,0.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:34px;
+}
+
+
+.designer-info{
+  position:relative;
+  width:100%;
+  padding:34px;
+  border-radius:28px;
+  background:rgba(3,10,8,0.58);
+  backdrop-filter:blur(24px);
+  border:1px solid rgba(220,255,225,0.14);
+}
+
+.hero-card::before{
+  content:"";
+  position:absolute;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  right:-70px;
+  top:-70px;
+  background:radial-gradient(circle,rgba(186,255,138,0.22),transparent 65%);
+  filter:blur(6px);
+}
+
+.hero-card::after{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  left:-60px;
+  bottom:-50px;
+  background:radial-gradient(circle,rgba(255,255,255,0.10),transparent 66%);
+  filter:blur(8px);
+}
+
+.designer-info{
+  z-index:1;
+}
+
+.designer-info::before{
+  content:"PORTFOLIO / 2026";
+  display:block;
+  color:rgba(186,255,138,0.88);
+  font-size:12px;
+  letter-spacing:2px;
+  margin-bottom:14px;
+}
+
+.designer-info h3{
+  font-size:26px;
+  margin-bottom:12px;
+  color:#ffffff;
+}
+
+.designer-info p{
+  color:rgba(235,255,240,0.76);
+  line-height:1.7;
+}
+
+/* 标题 */
+.section-title{
+  margin-bottom:44px;
+}
+
+.section-title h2{
+  font-size:46px;
+  margin-bottom:12px;
+  color:#ffffff;
+  text-shadow:0 8px 30px rgba(0,0,0,0.38);
+}
+
+.section-title p{
+  color:rgba(230,255,236,0.70);
+  line-height:1.8;
+}
+
+/* 关于 */
+.about-grid{
+  display:grid;
+  grid-template-columns:0.8fr 1.2fr;
+  gap:28px;
+}
+
+.glass-card{
+  padding:32px;
+  border-radius:30px;
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(220,255,225,0.13);
+  backdrop-filter:blur(20px);
+  box-shadow:0 22px 70px rgba(0,0,0,0.28);
+  color:rgba(235,255,240,0.82);
+  font-weight:500;
+}
+
+.info-list p{
+  padding:15px 0;
+  border-bottom:1px solid rgba(220,255,225,0.10);
+}
+
+.info-list strong{
+  color:#baff8a;
+  display:inline-block;
+  width:86px;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:24px;
+}
+
+.tags span{
+  padding:9px 15px;
+  border-radius:999px;
+  background:rgba(186,255,138,0.08);
+  border:1px solid rgba(186,255,138,0.16);
+  color:#baff8a;
+}
+
+/* 项目 */
+.project-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:26px;
+}
+
+.project-card{
+  min-height:370px;
+  border-radius:34px;
+  overflow:hidden;
+  background:linear-gradient(180deg,rgba(255,255,255,0.08),rgba(115,255,165,0.035));
+  border:1px solid rgba(220,255,225,0.13);
+  transition:0.45s;
+  position:relative;
+  backdrop-filter:blur(20px);
+  padding:32px;
+  box-shadow:0 30px 90px rgba(0,0,0,0.30);
+}
+
+.project-card:hover{
+  transform:translateY(-14px) scale(1.02);
+  border-color:rgba(186,255,138,0.34);
+  box-shadow:
+    0 40px 100px rgba(0,0,0,0.46),
+    0 0 48px rgba(186,255,138,0.14);
+}
+
+.project-number{
+  width:46px;
+  height:46px;
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:24px;
+  color:#baff8a;
+  background:rgba(186,255,138,0.08);
+  border:1px solid rgba(186,255,138,0.18);
+  font-weight:800;
+}
+
+.project-content small{
+  color:#baff8a;
+  letter-spacing:1px;
+}
+
+.project-content h3{
+  font-size:24px;
+  margin:12px 0;
+  color:#ffffff;
+}
+
+.project-content p{
+  color:rgba(235,255,240,0.68);
+  line-height:1.7;
+  font-size:14px;
+}
+
+.project-fill{
+  margin-top:24px;
+  padding:18px 20px;
+  border-radius:18px;
+  background:rgba(255,255,255,0.055);
+  border:1px solid rgba(255,255,255,0.08);
+  color:rgba(235,255,240,0.58);
+  font-size:14px;
+  line-height:1.7;
+}
+
+.process{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:22px;
+}
+
+.process span{
+  font-size:12px;
+  color:rgba(255,255,255,0.78);
+  padding:7px 10px;
+  border-radius:10px;
+  background:rgba(255,255,255,0.08);
+}
+
+/* 技能 */
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+
+.skill-card h3{
+  margin-bottom:18px;
+  color:#baff8a;
+}
+
+.skill-card p{
+  color:rgba(235,255,240,0.72);
+  line-height:2;
+}
+
+/* 联系 */
+.contact{
+  text-align:center;
+  padding-bottom:120px;
+}
+
+.contact-box{
+  max-width:900px;
+  margin:auto;
+  padding:72px 52px;
+  border-radius:42px;
+  background:linear-gradient(135deg,rgba(255,255,255,0.10),rgba(115,255,165,0.05));
+  border:1px solid rgba(220,255,225,0.13);
+  backdrop-filter:blur(20px);
+  box-shadow:0 35px 100px rgba(0,0,0,0.30);
+}
+
+.contact-box h2{
+  font-size:42px;
+  margin-bottom:18px;
+  color:#ffffff;
+}
+
+.contact-box p{
+  color:rgba(235,255,240,0.72);
+  line-height:1.9;
+  margin-bottom:28px;
+}
+
+footer{
+  padding:28px 8%;
+  text-align:center;
+  color:rgba(235,255,240,0.48);
+  border-top:1px solid rgba(220,255,225,0.08);
+}
+
+@media(max-width:900px){
+  .hero,
+  .about-grid,
+  .project-grid,
+  .skills-grid{
+    grid-template-columns:1fr;
+  }
+
+  .nav-links{
+    display:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="planet-glow"></div>
+<div class="green-mist"></div>
+<div class="pattern-overlay"></div>
+
+<nav class="nav">
+  <div class="logo">刘一<span>.</span></div>
+  <div class="nav-links">
+    <a href="#about">关于我</a>
+    <a href="#projects">作品展示</a>
+    <a href="#skills">专业技能</a>
+    <a href="#contact">联系方式</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div>
+    <div class="tag">人工智能 × 交互设计 × 个人作品集</div>
+
+    <h1>
+      用智能交互<br>
+      <span>重构设计体验</span>
+    </h1>
+
+    <p>
+      聚焦交互设计、数字艺术与智能体验，通过视觉、空间与技术的融合，
+      构建具有未来感与个人风格的设计表达。
+    </p>
+
+    <div class="hero-buttons">
+      <a class="btn primary" href="#projects">查看作品</a>
+      <a class="btn" href="#about">了解我</a>
+    </div>
+  </div>
+
+  <div class="hero-card">
+<div class="designer-info">
+      <h3>刘一 / 个人设计师作品集</h3>
+      <p>学号：S202535012</p>
+      <p>方向：工业设计 / 交互设计 / 人工智能设计</p>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="section-title">
+    <h2>关于我</h2>
+    <p>通过个人信息、设计方向与专业标签，呈现个人设计师的核心特征与创作取向。</p>
+  </div>
+
+  <div class="about-grid">
+    <div class="glass-card info-list">
+      <p><strong>姓名</strong> 刘一</p>
+      <p><strong>学号</strong> S202535012</p>
+      <p><strong>学校</strong> 北京工业大学</p>
+      <p><strong>专业</strong> 工业设计 / 交互设计</p>
+      <p><strong>邮箱</strong> 19164652529@163.com</p>
+    </div>
+
+    <div class="glass-card">
+      <h3>设计理念</h3>
+      <p style="margin-top:16px;line-height:1.9;">
+        我关注智能技术与设计体验之间的融合，尝试通过人工智能、体感交互、
+        数字文化与情感化设计，构建更具沉浸感、参与感和情感连接的设计作品。
+      </p>
+
+      <div class="tags">
+        <span>人工智能交互</span>
+        <span>用户体验设计</span>
+        <span>数字非遗设计</span>
+        <span>情感化设计</span>
+        <span>创意编程</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-title">
+    <h2>精选作品</h2>
+    <p>三个代表性作品以项目卡片形式呈现，展示作品名称、设计类型、项目简介与设计流程。</p>
+  </div>
+
+  <div class="project-grid">
+    <div class="project-card">
+      <div class="project-number">01</div>
+      <div class="project-content">
+        <small>作品一</small>
+        <h3>凝视入画：唐代发型互动体验</h3>
+        <p>通过眼动识别、发型解说与古风拍照合成，让观众以“凝视”的方式进入《捣练图》，沉浸式感受唐代发型文化与审美魅力。</p>
+        <div class="project-fill">这里可以放作品图片、作品说明、网页链接或展示截图。</div>
+        <div class="process">
+          <span>项目背景</span><span>设计过程</span><span>视觉呈现</span><span>最终展示</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">02</div>
+      <div class="project-content">
+        <small>作品二</small>
+        
+        <div class="project-fill">这里可以放系统界面、流程图、演示视频或项目链接。</div>
+        <div class="process">
+          <span>用户研究</span><span>系统设计</span><span>界面原型</span><span>干预体验</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">03</div>
+      <div class="project-content">
+        <small>作品三</small>
+        
+        <div class="project-fill">这里可以放展览照片、交互视频、作品介绍或线上链接。</div>
+        <div class="process">
+          <span>文化提取</span><span>空间体验</span><span>AI生成</span><span>沉浸展示</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-title">
+    <h2>专业技能</h2>
+    <p>技能区用于展示设计表达、交互开发与研究分析能力。</p>
+  </div>
+
+  <div class="skills-grid">
+    <div class="glass-card skill-card">
+      <h3>设计软件</h3>
+      <p>Figma<br>Photoshop<br>Illustrator<br>Blender</p>
+    </div>
+
+    <div class="glass-card skill-card">
+      <h3>交互开发</h3>
+      <p>HTML / CSS<br>JavaScript<br>动效开发<br>创意编程</p>
+    </div>
+
+    <div class="glass-card skill-card">
+      <h3>研究能力</h3>
+      <p>用户研究<br>设计策略<br>人因分析<br>情感体验研究</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="contact-box">
+    <h2>创造属于未来的设计体验</h2>
+    <p>这里可以放置邮箱、二维码、社交平台或作品集链接，用于展示个人设计师的联系方式。</p>
+    <a class="btn primary" href="mailto:19164652529@163.com">联系我</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 刘一个人设计作品集 ｜ 人工智能 × 交互 × 创意设计
+</footer>
+
+</body>
+</html>
